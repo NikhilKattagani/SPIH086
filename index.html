@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RiskRadar — Detect Industrial Risks Before They Become Accidents</title>
+  <meta name="description" content="RiskRadar analyzes maintenance records, failure history, inspection reports, safety audits, and sensor readings to detect industrial safety risks before accidents happen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" width="36" height="36">
+          <circle cx="20" cy="20" r="18" stroke="var(--cyan)" stroke-width="2" fill="none" opacity="0.3"/>
+          <circle cx="20" cy="20" r="12" stroke="var(--cyan)" stroke-width="1.5" fill="none" opacity="0.5"/>
+          <circle cx="20" cy="20" r="6" stroke="var(--cyan)" stroke-width="1" fill="none" opacity="0.7"/>
+          <circle cx="20" cy="20" r="2.5" fill="var(--cyan)"/>
+          <line x1="20" y1="2" x2="20" y2="20" stroke="var(--cyan)" stroke-width="1.5" opacity="0.6"/>
+        </svg>
+        <span class="logo-text">RiskRadar</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#risk-intelligence">Risk Intelligence</a></li>
+        <li><a href="#prioritization">Prioritization</a></li>
+      </ul>
+
+      <a href="#cta" class="btn btn-primary nav-cta">Get Started</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════ HERO ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          AI-Powered Industrial Safety
+        </div>
+        <h1 class="hero-headline">
+          Detect Industrial Risks <br/><span class="text-gradient">Before They Become Accidents.</span>
+        </h1>
+        <p class="hero-subtext">
+          RiskRadar analyzes <strong>maintenance records</strong>, <strong>failure logs</strong>,
+          <strong>inspection reports</strong>, <strong>safety audits</strong>, and
+          <strong>temperature &amp; pressure readings</strong> to identify high-risk assets —
+          before something goes wrong.
+        </p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            Analyze Risk
+          </a>
+          <a href="#how-it-works" class="btn btn-outline btn-lg">
+            See How It Works
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="radar-ring radar-ring-1"></div>
+        <div class="radar-ring radar-ring-2"></div>
+        <div class="radar-ring radar-ring-3"></div>
+        <div class="radar-sweep"></div>
+
+        <div class="risk-card-hero" id="heroRiskCard">
+          <div class="risk-card-header">
+            <div class="risk-card-asset">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+              <div>
+                <span class="risk-card-label">ASSET</span>
+                <span class="risk-card-name">Pump P-102</span>
+              </div>
+            </div>
+            <span class="risk-badge risk-high">HIGH RISK</span>
+          </div>
+
+          <div class="risk-score-display">
+            <div class="risk-score-circle" id="heroScoreCircle">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" class="score-bg"/>
+                <circle cx="60" cy="60" r="52" class="score-fill" id="heroScoreFill"/>
+              </svg>
+              <div class="score-value">
+                <span class="score-number" id="heroScoreNum">0</span>
+                <span class="score-total">/100</span>
+              </div>
+            </div>
+            <div class="risk-factors-mini">
+              <div class="factor-mini factor-danger">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Repeated Failures
+              </div>
+              <div class="factor-mini factor-warning">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Overdue Maintenance
+              </div>
+              <div class="factor-mini factor-danger">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>
+                Abnormal Temperature
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-fade-bottom"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ PROBLEM ═══ -->
+  <section class="section problem-section" id="problem">
+    <div class="container">
+      <div class="section-header anim-in">
+        <h2 class="section-title">Industrial Risks Don't Always <span class="text-gradient">Announce Themselves.</span></h2>
+        <p class="section-subtitle">
+          Critical warning signs are scattered across separate systems — maintenance records, failure logs,
+          inspection reports, safety audits, and sensor readings. No single source tells the full story.
+        </p>
+      </div>
+
+      <div class="data-sources-grid anim-in">
+        <div class="data-source-card">
+          <div class="ds-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h4>Maintenance Records</h4>
+          <p>Service history, scheduled tasks, overdue work orders</p>
+        </div>
+        <div class="data-source-card">
+          <div class="ds-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h4>Failure History</h4>
+          <p>Past equipment breakdowns, failure modes, recurrence patterns</p>
+        </div>
+        <div class="data-source-card">
+          <div class="ds-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <h4>Inspection Reports</h4>
+          <p>Field inspection findings, condition assessments, concerns</p>
+        </div>
+        <div class="data-source-card">
+          <div class="ds-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Safety Audits</h4>
+          <p>Compliance findings, safety violations, corrective action tracking</p>
+        </div>
+        <div class="data-source-card">
+          <div class="ds-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>Sensor Data</h4>
+          <p>Temperature, pressure, vibration and other real-time readings</p>
+        </div>
+      </div>
+
+      <div class="convergence-message anim-in">
+        <div class="convergence-line"></div>
+        <div class="convergence-badge">
+          <svg class="logo-icon-sm" viewBox="0 0 40 40" width="24" height="24">
+            <circle cx="20" cy="20" r="16" stroke="var(--cyan)" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <circle cx="20" cy="20" r="8" stroke="var(--cyan)" stroke-width="1" fill="none" opacity="0.7"/>
+            <circle cx="20" cy="20" r="2" fill="var(--cyan)"/>
+          </svg>
+          <span>RiskRadar brings these warning signs <strong>together.</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ FEATURES ═══ -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <div class="section-header anim-in">
+        <h2 class="section-title">One System. <span class="text-gradient">Every Warning Sign.</span></h2>
+        <p class="section-subtitle">Four intelligence layers that turn scattered industrial data into a unified risk picture.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card anim-in">
+          <div class="feature-icon feature-icon-cyan">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/><circle cx="12" cy="14" r="2"/></svg>
+          </div>
+          <h3>Maintenance Intelligence</h3>
+          <p>Identify overdue maintenance, recurring work orders, and maintenance-related risk patterns that signal potential failure.</p>
+          <div class="feature-tag">Predictive</div>
+        </div>
+
+        <div class="feature-card anim-in">
+          <div class="feature-icon feature-icon-red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3>Failure Analysis</h3>
+          <p>Detect repeated equipment failures, historical failure patterns, and cascading risk across connected assets.</p>
+          <div class="feature-tag">Diagnostic</div>
+        </div>
+
+        <div class="feature-card anim-in">
+          <div class="feature-icon feature-icon-orange">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>
+          </div>
+          <h3>Sensor Monitoring</h3>
+          <p>Identify abnormal temperature and pressure readings that deviate from safe operational ranges.</p>
+          <div class="feature-tag">Sensor Intelligence</div>
+        </div>
+
+        <div class="feature-card anim-in">
+          <div class="feature-icon feature-icon-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Safety Intelligence</h3>
+          <p>Combine maintenance, failure, sensor and inspection signals into an overall risk score with full explainability.</p>
+          <div class="feature-tag">Unified</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ HOW IT WORKS ═══ -->
+  <section class="section how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header anim-in">
+        <h2 class="section-title">From Raw Data to <span class="text-gradient">Actionable Safety Decisions.</span></h2>
+        <p class="section-subtitle">Five steps that transform scattered industrial records into prioritized safety intelligence.</p>
+      </div>
+
+      <div class="pipeline anim-in">
+        <div class="pipeline-line"></div>
+        <div class="pipeline-line-fill" id="pipelineFill"></div>
+
+        <div class="pipeline-step" data-step="1">
+          <div class="step-marker">
+            <span class="step-number">01</span>
+          </div>
+          <div class="step-content">
+            <h4>DATA</h4>
+            <p>Collect maintenance, failure, inspection, audit and sensor data from existing systems.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step" data-step="2">
+          <div class="step-marker">
+            <span class="step-number">02</span>
+          </div>
+          <div class="step-content">
+            <h4>ANALYZE</h4>
+            <p>Clean, normalize and process historical data to extract meaningful safety signals.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step" data-step="3">
+          <div class="step-marker">
+            <span class="step-number">03</span>
+          </div>
+          <div class="step-content">
+            <h4>ASSESS</h4>
+            <p>Calculate a composite risk score for every asset based on all available evidence.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step" data-step="4">
+          <div class="step-marker">
+            <span class="step-number">04</span>
+          </div>
+          <div class="step-content">
+            <h4>EXPLAIN</h4>
+            <p>Identify the specific contributing factors behind each asset's risk level.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step" data-step="5">
+          <div class="step-marker">
+            <span class="step-number">05</span>
+          </div>
+          <div class="step-content">
+            <h4>ACT</h4>
+            <p>Recommend corrective actions and inspection priority so teams know what to do first.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ RISK INTELLIGENCE ═══ -->
+  <section class="section intelligence-section" id="risk-intelligence" data-alias-id="risk-analyzer">
+    <div class="container">
+      <div class="section-header anim-in">
+        <h2 class="section-title">Don't Just Predict Risk. <span class="text-gradient">Explain It.</span></h2>
+        <p class="section-subtitle">Every risk score comes with a clear explanation of contributing factors and recommended actions.</p>
+      </div>
+
+      <div class="intelligence-panel anim-in" id="risk-analyzer">
+        <span class="demo-data-label">SAMPLE ASSET ANALYSIS</span>
+        <!-- Left: Risk Overview -->
+        <div class="intel-overview">
+          <div class="intel-header">
+            <div class="intel-asset-info">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+              <div>
+                <span class="intel-label">ASSET UNDER REVIEW</span>
+                <h3 class="intel-asset-name">Pump P-102</h3>
+              </div>
+            </div>
+            <span class="risk-badge risk-high">HIGH</span>
+          </div>
+
+          <div class="intel-score-area">
+            <div class="intel-score-circle" id="intelScoreCircle">
+              <svg viewBox="0 0 160 160">
+                <circle cx="80" cy="80" r="68" class="score-bg"/>
+                <circle cx="80" cy="80" r="68" class="score-fill" id="intelScoreFill"/>
+              </svg>
+              <div class="score-value">
+                <span class="score-number-lg" id="intelScoreNum">0</span>
+                <span class="score-total">/100</span>
+              </div>
+            </div>
+            <span class="intel-score-label">RISK SCORE</span>
+          </div>
+
+          <div class="intel-factors">
+            <h4>Contributing Factors</h4>
+            <div class="factor-row">
+              <div class="factor-info">
+                <span class="factor-dot factor-dot-red"></span>
+                <span>Previous Failures</span>
+              </div>
+              <div class="factor-bar-wrap">
+                <div class="factor-bar factor-bar-red" style="--factor-width:85%"></div>
+              </div>
+              <span class="factor-detail">4 incidents</span>
+            </div>
+            <div class="factor-row">
+              <div class="factor-info">
+                <span class="factor-dot factor-dot-orange"></span>
+                <span>Overdue Maintenance</span>
+              </div>
+              <div class="factor-bar-wrap">
+                <div class="factor-bar factor-bar-orange" style="--factor-width:70%"></div>
+              </div>
+              <span class="factor-detail">35 days</span>
+            </div>
+            <div class="factor-row">
+              <div class="factor-info">
+                <span class="factor-dot factor-dot-red"></span>
+                <span>Temperature Anomaly</span>
+              </div>
+              <div class="factor-bar-wrap">
+                <div class="factor-bar factor-bar-red" style="--factor-width:75%"></div>
+              </div>
+              <span class="factor-detail">Above range</span>
+            </div>
+            <div class="factor-row">
+              <div class="factor-info">
+                <span class="factor-dot factor-dot-orange"></span>
+                <span>Inspection Concern</span>
+              </div>
+              <div class="factor-bar-wrap">
+                <div class="factor-bar factor-bar-orange" style="--factor-width:55%"></div>
+              </div>
+              <span class="factor-detail">Flagged</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Explanation + Actions -->
+        <div class="intel-details">
+          <div class="intel-explanation">
+            <div class="intel-detail-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <h4>Risk Explanation</h4>
+            </div>
+            <p class="explanation-text">
+              <strong>Pump P-102</strong> is classified as <strong class="text-red">high risk</strong> due to
+              <strong>4 previous failure incidents</strong>, maintenance that is
+              <strong class="text-orange">35 days overdue</strong>, temperature readings
+              <strong class="text-red">above the safe operating range</strong>, and a
+              concern flagged during the most recent field inspection.
+            </p>
+          </div>
+
+          <div class="intel-actions">
+            <div class="intel-detail-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <h4>Recommended Actions</h4>
+            </div>
+            <ul class="action-list">
+              <li>
+                <span class="action-priority action-critical">CRITICAL</span>
+                Immediate physical inspection of Pump P-102
+              </li>
+              <li>
+                <span class="action-priority action-high">HIGH</span>
+                Schedule preventive maintenance within 48 hours
+              </li>
+              <li>
+                <span class="action-priority action-medium">MEDIUM</span>
+                Calibrate temperature sensors and verify readings
+              </li>
+              <li>
+                <span class="action-priority action-low">MONITOR</span>
+                Increase monitoring frequency until risk reduces
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ PRIORITIZATION ═══ -->
+  <section class="section prioritization-section" id="prioritization">
+    <div class="container">
+      <div class="section-header anim-in">
+        <h2 class="section-title">Know What to <span class="text-gradient">Inspect First.</span></h2>
+        <p class="section-subtitle">
+          Inspectors have limited time. RiskRadar ranks every asset so your team focuses resources
+          where the risk is highest.
+        </p>
+      </div>
+
+      <div class="ranking-table-wrap anim-in">
+        <div class="ranking-table">
+          <div class="ranking-header">
+            <span class="rh-rank">Priority</span>
+            <span class="rh-asset">Asset</span>
+            <span class="rh-score">Risk Score</span>
+            <span class="rh-level">Risk Level</span>
+            <span class="rh-action">Action</span>
+          </div>
+
+          <div class="ranking-row ranking-row-critical" data-rank="1">
+            <span class="rr-rank"><span class="rank-number">#1</span></span>
+            <span class="rr-asset">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+              Pump P-102
+            </span>
+            <span class="rr-score"><span class="score-pill score-pill-red">87</span></span>
+            <span class="rr-level"><span class="level-badge level-high">HIGH</span></span>
+            <span class="rr-action">Immediate Inspection</span>
+          </div>
+
+          <div class="ranking-row" data-rank="2">
+            <span class="rr-rank"><span class="rank-number">#2</span></span>
+            <span class="rr-asset">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+              Boiler B-201
+            </span>
+            <span class="rr-score"><span class="score-pill score-pill-red">81</span></span>
+            <span class="rr-level"><span class="level-badge level-high">HIGH</span></span>
+            <span class="rr-action">Priority Maintenance</span>
+          </div>
+
+          <div class="ranking-row" data-rank="3">
+            <span class="rr-rank"><span class="rank-number">#3</span></span>
+            <span class="rr-asset">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+              Compressor C-104
+            </span>
+            <span class="rr-score"><span class="score-pill score-pill-orange">64</span></span>
+            <span class="rr-level"><span class="level-badge level-medium">MEDIUM</span></span>
+            <span class="rr-action">Scheduled Review</span>
+          </div>
+
+          <div class="ranking-row" data-rank="4">
+            <span class="rr-rank"><span class="rank-number">#4</span></span>
+            <span class="rr-asset">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+              Tank T-301
+            </span>
+            <span class="rr-score"><span class="score-pill score-pill-orange">52</span></span>
+            <span class="rr-level"><span class="level-badge level-medium">MEDIUM</span></span>
+            <span class="rr-action">Monitor Closely</span>
+          </div>
+        </div>
+
+        <p class="ranking-footer-msg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Focus resources where the risk is highest.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ TRUST ═══ -->
+  <section class="section trust-section" id="trust">
+    <div class="container">
+      <div class="section-header anim-in">
+        <h2 class="section-title">Safety Decisions Need <span class="text-gradient">a Reason.</span></h2>
+        <p class="section-subtitle">
+          RiskRadar doesn't just output a score. Every recommendation is backed by a transparent
+          audit trail that records the evidence, the logic, and the outcome.
+        </p>
+      </div>
+
+      <div class="audit-trail-card anim-in">
+        <div class="audit-header">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>AUDIT TRAIL</span>
+        </div>
+        <div class="audit-body">
+          <div class="audit-row">
+            <span class="audit-key">Asset</span>
+            <span class="audit-val">Pump P-102</span>
+          </div>
+          <div class="audit-row">
+            <span class="audit-key">Risk Score</span>
+            <span class="audit-val"><span class="score-pill score-pill-red">87 / 100</span></span>
+          </div>
+          <div class="audit-row">
+            <span class="audit-key">Contributing Factors</span>
+            <span class="audit-val">4 previous failures · Maintenance 35 days overdue · Temperature above range · Inspection concern</span>
+          </div>
+          <div class="audit-row">
+            <span class="audit-key">Recommendation</span>
+            <span class="audit-val">Immediate inspection + preventive maintenance</span>
+          </div>
+          <div class="audit-row">
+            <span class="audit-key">Generated</span>
+            <span class="audit-val">2026-08-22  20:00 IST</span>
+          </div>
+        </div>
+        <div class="audit-footer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Fully transparent. Fully explainable. Fully auditable.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ FUTURE ═══ -->
+  <section class="section future-section" id="future">
+    <div class="container">
+      <div class="section-header anim-in">
+        <h2 class="section-title">Roadmap: <span class="text-gradient">Real-Time Industrial Intelligence.</span></h2>
+        <p class="section-subtitle">
+          Future integration with live sensor streams will enable continuous risk monitoring
+          and automatic early-warning alerts.
+        </p>
+      </div>
+
+      <div class="future-pipeline anim-in">
+        <div class="future-step">
+          <div class="future-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <span>IoT Sensors</span>
+        </div>
+        <div class="future-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="future-step">
+          <div class="future-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <span>Live Data</span>
+        </div>
+        <div class="future-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="future-step future-step-highlight">
+          <div class="future-icon">
+            <svg class="logo-icon-sm" viewBox="0 0 40 40" width="24" height="24">
+              <circle cx="20" cy="20" r="16" stroke="var(--cyan)" stroke-width="1.5" fill="none" opacity="0.5"/>
+              <circle cx="20" cy="20" r="8" stroke="var(--cyan)" stroke-width="1" fill="none" opacity="0.7"/>
+              <circle cx="20" cy="20" r="2" fill="var(--cyan)"/>
+            </svg>
+          </div>
+          <span>RiskRadar</span>
+        </div>
+        <div class="future-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="future-step">
+          <div class="future-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <span>Risk Detection</span>
+        </div>
+        <div class="future-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="future-step">
+          <div class="future-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          </div>
+          <span>Early Warning</span>
+        </div>
+      </div>
+
+      <p class="future-note anim-in">
+        Future-ready architecture for live temperature, pressure, vibration and flow-rate sensor integration.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ FINAL CTA ═══ -->
+  <section class="section cta-section" id="cta">
+    <div class="cta-grid-bg"></div>
+    <div class="container cta-container">
+      <div class="cta-content anim-in">
+        <h2 class="cta-headline">Don't Wait for Failure.<br/><span class="text-gradient">Detect the Risk.</span></h2>
+        <p class="cta-subtext">Turn industrial data into actionable safety intelligence.</p>
+        <a href="#risk-analyzer" class="btn btn-primary btn-xl">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Start Risk Analysis
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <svg class="logo-icon" viewBox="0 0 40 40" width="28" height="28">
+            <circle cx="20" cy="20" r="18" stroke="var(--cyan)" stroke-width="2" fill="none" opacity="0.3"/>
+            <circle cx="20" cy="20" r="12" stroke="var(--cyan)" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <circle cx="20" cy="20" r="6" stroke="var(--cyan)" stroke-width="1" fill="none" opacity="0.7"/>
+            <circle cx="20" cy="20" r="2.5" fill="var(--cyan)"/>
+          </svg>
+          <span class="logo-text">RiskRadar</span>
+        </a>
+        <p class="footer-desc">AI-powered industrial safety intelligence.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#risk-intelligence">Risk Intelligence</a>
+        <a href="#prioritization">Prioritization</a>
+      </div>
+      <div class="footer-meta">
+        <span>Prototype · PS-04 | Industrial Safety Risk Prediction</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
