@@ -1,0 +1,7 @@
+asset_id,asset_name,asset_type,location,failure_count,maintenance_delay_days,inspection_issue,temperature,incident_count,previous_score
+P102,Pump P-102,Pump,Unit A,4,35,yes,95,0,54
+B201,Boiler B-201,Boiler,Unit B,3,25,yes,88,1,60
+C104,Compressor C-104,Compressor,Unit C,2,12,no,83,0,48
+T301,Tank T-301,Tank,Unit A,1,5,no,72,0,40
+M108,Motor M-108,Motor,Unit D,0,0,no,68,0,25
+V502,Valve V-502,Valve,Unit B,2,40,yes,91,0,55

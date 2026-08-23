@@ -1,0 +1,21 @@
+asset_id,asset_name,asset_type,location,failure_count,maintenance_delay_days,inspection_issue,temperature,incident_count,previous_score
+P102,Pump P-102,Pump,Unit A,4,35,yes,95,0,54
+B201,Boiler B-201,Boiler,Unit B,3,25,yes,88,1,60
+C104,Compressor C-104,Compressor,Unit C,2,12,no,83,0,48
+T301,Tank T-301,Tank,Unit A,1,5,no,72,0,40
+M108,Motor M-108,Motor,Unit D,0,0,no,68,0,25
+V502,Valve V-502,Valve,Unit B,2,18,,87,1,41
+P103,Pump P-103,Pump,Unit C,,42,yes,102,2,50
+B202,Boiler B-202,Boiler,Unit A,three,10,no,79,0,35
+C105,Compressor C-105,Compressor,Unit D,1,,no,,0,30
+T302,Tank T-302,Tank,Unit B,0,0,yes,91,,45
+M109,Motor M-109,Motor,Unit A,,-5,no,65,0,20
+V503,Valve V-503,Valve,Unit C,5,60,abnormal,110,3,70
+P104,Pump P-104,Pump,Unit D,1,7,NO,not_available,0,32
+B203,,Boiler,Unit A,2,20,yes,89,1,55
+C106,Compressor C-106,,Unit C,1,15,no,81,0,38
+T303,Tank T-303,Tank,,0,0,no,70,0,18
+M110,Motor M-110,Motor,Unit B,1,90,yes,96,1,62
+V504,Valve V-504,Valve,Unit D,0,0,no,75,0,12
+P105,Pump P-105,Pump,Unit A,2,abc,no,85,0,36
+B204,Boiler B-204,Boiler,Unit C,7,120,yes,125,5,82

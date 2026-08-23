@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+riskradar.db
+script_backup.js
+setup_backend.py
