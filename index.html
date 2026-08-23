@@ -314,79 +314,213 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
               <div>
                 <span class="intel-label">ASSET UNDER REVIEW</span>
-                <h3 class="intel-asset-name">Pump P-102</h3>
+                <h3 class="intel-asset-name" id="intelAssetName">Pump P-102</h3>
               </div>
             </div>
-            <span class="risk-badge risk-high">HIGH</span>
+            <span class="risk-badge risk-high" id="intelAssetLevel">HIGH</span>
           </div>
 
-          <div class="intel-score-area">
-            <div class="intel-score-circle" id="intelScoreCircle">
-              <svg viewBox="0 0 160 160">
-                <circle cx="80" cy="80" r="68" class="score-bg"/>
-                <circle cx="80" cy="80" r="68" class="score-fill" id="intelScoreFill"/>
+          <!-- Assessment Overview: Grouping Risk, Confidence, Data Quality -->
+          <div class="assessment-overview-box">
+            <h4 class="overview-title">Assessment Overview</h4>
+            
+            <div class="assessment-metrics-grid">
+              <!-- Metric 1: Risk Score -->
+              <div class="overview-metric-card risk-score-metric">
+                <div class="intel-score-circle" id="intelScoreCircle">
+                  <svg viewBox="0 0 160 160">
+                    <circle cx="80" cy="80" r="68" class="score-bg"/>
+                    <circle cx="80" cy="80" r="68" class="score-fill" id="intelScoreFill"/>
+                  </svg>
+                  <div class="score-value">
+                    <span class="score-number-lg" id="intelScoreNum">0</span>
+                    <span class="score-total">/100</span>
+                  </div>
+                </div>
+                <span class="metric-lbl">RISK SCORE</span>
+                <span class="metric-sub-badge risk-high-text" id="intelScoreLevelText">HIGH</span>
+              </div>
+
+              <!-- Metric 2: Confidence -->
+              <div class="overview-metric-card confidence-metric">
+                <div class="metric-value-box">
+                  <span class="metric-val-num" id="intelConfidenceVal">82%</span>
+                </div>
+                <span class="metric-lbl">CONFIDENCE</span>
+                <span class="metric-sub-badge status-good" id="intelConfidenceLevelText">FAIR</span>
+                <div class="metric-tooltip-text">Confidence reflects available evidence.</div>
+              </div>
+
+              <!-- Metric 3: Data Quality -->
+              <div class="overview-metric-card dq-metric">
+                <div class="metric-value-box">
+                  <span class="metric-val-num" id="intelDqVal">94%</span>
+                </div>
+                <span class="metric-lbl">DATA QUALITY</span>
+                <span class="metric-sub-badge status-good" id="intelDqLevelText">GOOD</span>
+                <div class="metric-tooltip-text">Based on completeness of records.</div>
+              </div>
+            </div>
+            
+            <!-- Dynamic Data Quality Warning Box (Visible when limited/low quality) -->
+            <div class="dq-warning-banner" id="intelDqWarning" style="display: none;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span>Assessment confidence may be reduced because some records are incomplete.</span>
+            </div>
+          </div>
+
+          <!-- Risk Status Change -->
+          <div class="status-change-box">
+            <div class="status-change-item">
+              <span class="status-change-lbl">PREVIOUS</span>
+              <span class="status-change-val" id="intelPrevStatus">54 — MEDIUM</span>
+            </div>
+            <div class="status-change-divider"></div>
+            <div class="status-change-item">
+              <span class="status-change-lbl">CURRENT</span>
+              <span class="status-change-val text-red" id="intelCurrStatus">87 — HIGH</span>
+            </div>
+            <div class="status-change-divider"></div>
+            <div class="status-change-item">
+              <span class="status-change-lbl">CHANGE</span>
+              <span class="status-change-val text-red font-bold" id="intelChangeVal">↑ +33</span>
+            </div>
+          </div>
+
+          <!-- Risk Trend Section -->
+          <div class="intel-trend">
+            <div class="intel-detail-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              <h4>Risk Trend</h4>
+              <span class="trend-change trend-change-up" id="intelTrendChange">↑ +33 points</span>
+            </div>
+            
+            <div class="trend-chart-container">
+              <svg class="trend-svg" viewBox="0 0 300 80" width="100%" height="80">
+                <defs>
+                  <linearGradient id="trendGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--green)" stop-opacity="0.8"/>
+                    <stop offset="50%" stop-color="var(--orange)" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="var(--red)" stop-opacity="0.8"/>
+                  </linearGradient>
+                </defs>
+                <path d="M 30,56.8 L 90,52.8 L 150,49.6 L 210,43.2 L 270,30.4" fill="none" stroke="url(#trendGrad)" stroke-width="3" stroke-linecap="round" id="trendLinePath"/>
+                <g id="trendPointsGroup">
+                  <circle cx="30" cy="56.8" r="4" fill="var(--green)"/>
+                  <text x="30" y="74" text-anchor="middle" class="trend-chart-text">54</text>
+                  
+                  <circle cx="90" cy="52.8" r="4" fill="var(--green)"/>
+                  <text x="90" y="74" text-anchor="middle" class="trend-chart-text">59</text>
+                  
+                  <circle cx="150" cy="49.6" r="4" fill="var(--orange)"/>
+                  <text x="150" y="74" text-anchor="middle" class="trend-chart-text">63</text>
+                  
+                  <circle cx="210" cy="43.2" r="4" fill="var(--orange)"/>
+                  <text x="210" y="74" text-anchor="middle" class="trend-chart-text">71</text>
+                  
+                  <circle cx="270" cy="30.4" r="6" fill="var(--red)" stroke="#fff" stroke-width="1.5"/>
+                  <text x="270" y="18" text-anchor="middle" class="trend-chart-text font-bold" fill="var(--red)">87</text>
+                </g>
               </svg>
-              <div class="score-value">
-                <span class="score-number-lg" id="intelScoreNum">0</span>
-                <span class="score-total">/100</span>
-              </div>
             </div>
-            <span class="intel-score-label">RISK SCORE</span>
+            <span class="trend-caption" id="intelTrendCaption">Risk increased significantly</span>
           </div>
 
-          <div class="intel-factors">
-            <h4>Contributing Factors</h4>
-            <div class="factor-row">
-              <div class="factor-info">
-                <span class="factor-dot factor-dot-red"></span>
-                <span>Previous Failures</span>
-              </div>
-              <div class="factor-bar-wrap">
-                <div class="factor-bar factor-bar-red" style="--factor-width:85%"></div>
-              </div>
-              <span class="factor-detail">4 incidents</span>
+          <!-- Evidence → Score connector -->
+          <div class="evidence-connector">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            <span>Evidence → Risk Score</span>
+          </div>
+
+          <!-- Evidence Breakdown -->
+          <div class="evidence-breakdown-section">
+            <div class="intel-detail-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+              <h4>Evidence Breakdown</h4>
             </div>
-            <div class="factor-row">
-              <div class="factor-info">
-                <span class="factor-dot factor-dot-orange"></span>
-                <span>Overdue Maintenance</span>
+            
+            <div class="evidence-list" id="intelEvidenceList">
+              <div class="evidence-row">
+                <span class="evidence-name">Failure history</span>
+                <div class="evidence-bar-wrap">
+                  <div class="evidence-bar bar-red" style="width: 25%"></div>
+                </div>
+                <span class="evidence-points">25 pts</span>
               </div>
-              <div class="factor-bar-wrap">
-                <div class="factor-bar factor-bar-orange" style="--factor-width:70%"></div>
+              <div class="evidence-row">
+                <span class="evidence-name">Maintenance delay</span>
+                <div class="evidence-bar-wrap">
+                  <div class="evidence-bar bar-orange" style="width: 20%"></div>
+                </div>
+                <span class="evidence-points">20 pts</span>
               </div>
-              <span class="factor-detail">35 days</span>
+              <div class="evidence-row">
+                <span class="evidence-name">Temperature anomaly</span>
+                <div class="evidence-bar-wrap">
+                  <div class="evidence-bar bar-orange" style="width: 20%"></div>
+                </div>
+                <span class="evidence-points">20 pts</span>
+              </div>
+              <div class="evidence-row">
+                <span class="evidence-name">Inspection concern</span>
+                <div class="evidence-bar-wrap">
+                  <div class="evidence-bar bar-yellow" style="width: 15%"></div>
+                </div>
+                <span class="evidence-points">15 pts</span>
+              </div>
+              <div class="evidence-row">
+                <span class="evidence-name">Incident history</span>
+                <div class="evidence-bar-wrap">
+                  <div class="evidence-bar bar-blue" style="width: 7%"></div>
+                </div>
+                <span class="evidence-points">7 pts</span>
+              </div>
             </div>
-            <div class="factor-row">
-              <div class="factor-info">
-                <span class="factor-dot factor-dot-red"></span>
-                <span>Temperature Anomaly</span>
-              </div>
-              <div class="factor-bar-wrap">
-                <div class="factor-bar factor-bar-red" style="--factor-width:75%"></div>
-              </div>
-              <span class="factor-detail">Above range</span>
-            </div>
-            <div class="factor-row">
-              <div class="factor-info">
-                <span class="factor-dot factor-dot-orange"></span>
-                <span>Inspection Concern</span>
-              </div>
-              <div class="factor-bar-wrap">
-                <div class="factor-bar factor-bar-orange" style="--factor-width:55%"></div>
-              </div>
-              <span class="factor-detail">Flagged</span>
+            <div class="evidence-total-footer">
+              <span>TOTAL RISK SCORE</span>
+              <span class="total-risk-val"><strong id="intelEvidenceTotalScore">87</strong> / 100</span>
             </div>
           </div>
         </div>
 
         <!-- Right: Explanation + Actions -->
         <div class="intel-details">
+          <!-- Top Risk Drivers Section -->
+          <div class="intel-drivers-section">
+            <div class="intel-detail-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <h4>Top Risk Drivers</h4>
+            </div>
+            <div class="drivers-list" id="intelDriversList">
+              <div class="driver-item">
+                <span class="driver-badge badge-critical">CRITICAL</span>
+                <span class="driver-name">Repeated failures</span>
+                <span class="driver-points">25 pts</span>
+              </div>
+              <div class="driver-item">
+                <span class="driver-badge badge-high">HIGH</span>
+                <span class="driver-name">Maintenance overdue</span>
+                <span class="driver-points">20 pts</span>
+              </div>
+              <div class="driver-item">
+                <span class="driver-badge badge-high">HIGH</span>
+                <span class="driver-name">Temperature anomaly</span>
+                <span class="driver-points">20 pts</span>
+              </div>
+              <div class="driver-item">
+                <span class="driver-badge badge-medium">MEDIUM</span>
+                <span class="driver-name">Inspection concern</span>
+                <span class="driver-points">15 pts</span>
+              </div>
+            </div>
+          </div>
+
           <div class="intel-explanation">
             <div class="intel-detail-header">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              <h4>Risk Explanation</h4>
+              <h4>Why is this asset risky?</h4>
             </div>
-            <p class="explanation-text">
+            <p class="explanation-text" id="intelExplanationText">
               <strong>Pump P-102</strong> is classified as <strong class="text-red">high risk</strong> due to
               <strong>4 previous failure incidents</strong>, maintenance that is
               <strong class="text-orange">35 days overdue</strong>, temperature readings
@@ -395,27 +529,90 @@
             </p>
           </div>
 
+          <!-- What Changed? Expandable Details -->
+          <details class="intel-expandable-card" id="intelWhatChangedDetails">
+            <summary class="expandable-card-summary">
+              <div class="intel-detail-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 20V10M6 20V4M18 20v-4"/></svg>
+                <h4>What Changed?</h4>
+              </div>
+              <span class="summary-toggle-icon">▼</span>
+            </summary>
+            <div class="expandable-card-content" id="intelWhatChangedContent">
+              <div class="change-item change-item-red">
+                <span class="change-delta">+12</span>
+                <span>Maintenance became overdue</span>
+              </div>
+              <div class="change-item change-item-red">
+                <span class="change-delta">+10</span>
+                <span>Temperature crossed threshold</span>
+              </div>
+              <div class="change-item change-item-red">
+                <span class="change-delta">+11</span>
+                <span>New failure recorded</span>
+              </div>
+              <div class="change-summary">
+                Risk status changed: <strong>54 (MEDIUM) → 87 (HIGH)</strong><br/>
+                Increase: <strong>+33 points</strong>
+              </div>
+            </div>
+          </details>
+
+          <!-- Why Confidence? Expandable Details -->
+          <details class="intel-expandable-card" id="intelConfidenceExplanationDetails">
+            <summary class="expandable-card-summary">
+              <div class="intel-detail-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <h4>Why 82% Confidence?</h4>
+              </div>
+              <span class="summary-toggle-icon">▼</span>
+            </summary>
+            <div class="expandable-card-content" id="intelConfidenceExplanationContent">
+              <div class="confidence-reason-item reason-success">
+                <span class="reason-icon">✓</span>
+                <span>Failure history available</span>
+              </div>
+              <div class="confidence-reason-item reason-success">
+                <span class="reason-icon">✓</span>
+                <span>Maintenance records available</span>
+              </div>
+              <div class="confidence-reason-item reason-success">
+                <span class="reason-icon">✓</span>
+                <span>Sensor readings available</span>
+              </div>
+              <div class="confidence-reason-item reason-success">
+                <span class="reason-icon">✓</span>
+                <span>Inspection record available</span>
+              </div>
+              <div class="confidence-reason-item reason-warning">
+                <span class="reason-icon">⚠</span>
+                <span>Some historical fields incomplete</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Prioritized Recommended Actions -->
           <div class="intel-actions">
             <div class="intel-detail-header">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               <h4>Recommended Actions</h4>
             </div>
-            <ul class="action-list">
+            <ul class="action-list" id="intelActionsList">
               <li>
-                <span class="action-priority action-critical">CRITICAL</span>
-                Immediate physical inspection of Pump P-102
+                <span class="action-priority action-critical">IMMEDIATE</span>
+                Inspect Pump P-102
               </li>
               <li>
                 <span class="action-priority action-high">HIGH</span>
-                Schedule preventive maintenance within 48 hours
+                Schedule maintenance
+              </li>
+              <li>
+                <span class="action-priority action-high">HIGH</span>
+                Check temperature sensor
               </li>
               <li>
                 <span class="action-priority action-medium">MEDIUM</span>
-                Calibrate temperature sensors and verify readings
-              </li>
-              <li>
-                <span class="action-priority action-low">MONITOR</span>
-                Increase monitoring frequency until risk reduces
+                Review inspection findings
               </li>
             </ul>
           </div>
